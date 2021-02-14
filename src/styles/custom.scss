@@ -1,0 +1,11 @@
+// change the theme
+$theme-colors: (
+  "primary": yellow,
+  "danger": #ff4136
+);
+
+    .btn-primary:disabled {
+    background-color:#cccccc !important;
+}
+
+@import '~bootstrap/scss/bootstrap.scss';
