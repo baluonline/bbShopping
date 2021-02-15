@@ -13,8 +13,8 @@ const ReactRouter = () => {
       <Header />
       <Route exact path='/' component={App} />
       <Route path='/posts' component={Posts} />
-      <Route path="/cards" component={ShoppingCards} />
-      <Route path="/Users" component={Users} />
+      {/* <Route path="/cards" component={ShoppingCards} /> */}
+      <Route path="/cards" component={Users} />
       <Route path="/estimations" component={Estimations} />
       <Footer />
     </Router>

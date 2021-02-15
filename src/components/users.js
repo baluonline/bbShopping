@@ -1,42 +1,45 @@
-import React, { useEffect, useReducer } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchUsersJson } from '..//../src/actions/'
-import shoppingCardsReducers from '../reducers/'
+import React, { useEffect, useReducer } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+import { fetchUsersJson } from '..//../src/actions/';
+import shoppingCardsReducers from '../reducers/';
+// import { jsonPlaceHolderInitialState } from "../reducers/jsonplaceholder";
 
 const Users = () => {
   const initialState = {
-    jsonPlaceHolder: {
-      jsonUsers: [],
-      pageNumber: ''
-    }
-  }
-  const [state, dispatch] = useReducer(shoppingCardsReducers, initialState)
-  const users = state.jsonPlaceHolder.jsonUsers
-  const pageNumber = state.jsonPlaceHolder.jsonUsers
+    jsonUsers: [],
+    pageNumber: 1
+  };
+  const [state, dispatch] = useReducer(shoppingCardsReducers, initialState);
+  const users = state.jsonPlaceHolder?.jsonUsers;
+  const pageNumber = state.jsonPlaceHolder?.pageNumber;
   useEffect(() => {
-    fetchUsersJson(state.jsonPlaceHolder.pageNumber).then(resp => {
-      dispatch({ type: resp.type, data: resp.payload })
-    })
-    return( () => console.log('cleanup on change of users'));
-  }, [])
+    fetchUsersJson().then(resp => {
+      console.log(resp);
+      dispatch({
+        type: resp.type,
+        payload: resp.payload
+      });
+    });
+    return (() => console.log('cleanup on change of users'));
+  }, []);
 
   const RenderUsers = ({ usersList }) => {
-    if (usersList.length > 0) {
+    if (usersList) {
       return (
         <div>
           {usersList.map((user, index) => {
             return (
               <div key={index}>
                 <div className='row d-flex justify-content-xl-center justify-content-md-center justify-content-sm-center '>
-                  {user.id} . {user.name}
+                  {user.id} . {user.title}
                 </div>
               </div>
-            )
+            );
           })}
         </div>
-      )
-    } else return <div> no users</div>
-  }
+      );
+    } else return <div> no users</div>;
+  };
 
   return (
     <div>
@@ -44,13 +47,12 @@ const Users = () => {
         className='btn-primary btn-lg float-left'
         onClick={() => dispatch({ type: 'DECREMENT' })}
       >
-        {' '}
-        {console.log(JSON.stringify(users))}
         Previous
       </button>
+      <span > pageNumber : {pageNumber} </span>
       <button
         className='btn-primary btn-lg float-right'
-        onClick={() => dispatch({ type: 'INCREMENT' })}
+        onClick={() => dispatch({ type: 'INCREMENT', data: 1 })}
       >
         Next Page
       </button>
@@ -58,7 +60,7 @@ const Users = () => {
         <RenderUsers usersList={users} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Users
+export default Users;

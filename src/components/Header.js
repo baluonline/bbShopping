@@ -42,7 +42,7 @@ const Header = () => {
             <li className='nav-item active'>
               <Link className='nav-link text-white' id='bb-nav-title' to='/cards'>
                 Shopping
-              </Link>
+              </Link>c
 
             </li>
             <li className='nav-item'>
