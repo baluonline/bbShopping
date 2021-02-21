@@ -40,7 +40,7 @@ const Header = () => {
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav mr-auto'>
             <li className='nav-item active'>
-              <Link className='nav-link text-white' id='bb-nav-title' to='/cards'>
+              <Link className='nav-link text-white' id='bb-nav-title' to='/posts'>
                 Shopping
               </Link>c
 
@@ -51,7 +51,7 @@ const Header = () => {
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link text-white' id='bb-nav-title' to='/posts'>
+              <Link className='nav-link text-white' id='bb-nav-title' to='/aboutus'>
                 About us
               </Link>
             </li>

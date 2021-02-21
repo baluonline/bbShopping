@@ -47,7 +47,7 @@ export const fetchUsers = (pageNumber, itemsCount) => {
         .catch(error => console.log(error));
 };
 
-export const fetchUsersJson = () => {
+export const fetchPosts = () => {
     return axios.get(jsonplaceholder + 'posts/')
         .then(({ data }) => {
             return {

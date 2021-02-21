@@ -1,19 +1,20 @@
 import React, { useEffect, useReducer } from 'react';
+import { Link } from 'react-router-dom';
 // import { useDispatch, useSelector } from 'react-redux';
-import { fetchUsersJson } from '..//../src/actions/';
-import shoppingCardsReducers from '../reducers/';
+import { fetchPosts } from '../../actions';
+import shoppingCardsReducers from '../../reducers';
 // import { jsonPlaceHolderInitialState } from "../reducers/jsonplaceholder";
 
-const Users = () => {
+const ShoppingPosts = () => {
   const initialState = {
     jsonUsers: [],
     pageNumber: 1
   };
   const [state, dispatch] = useReducer(shoppingCardsReducers, initialState);
-  const users = state.jsonPlaceHolder?.jsonUsers;
+  const posts = state.jsonPlaceHolder?.jsonUsers;
   const pageNumber = state.jsonPlaceHolder?.pageNumber;
   useEffect(() => {
-    fetchUsersJson().then(resp => {
+    fetchPosts().then(resp => {
       console.log(resp);
       dispatch({
         type: resp.type,
@@ -23,22 +24,25 @@ const Users = () => {
     return (() => console.log('cleanup on change of users'));
   }, []);
 
-  const RenderUsers = ({ usersList }) => {
-    if (usersList) {
+  const RenderPosts = ({ postsList }) => {
+    if (postsList) {
       return (
         <div>
-          {usersList.map((user, index) => {
+          {postsList.map((user, index) => {
+            const PostDetails = '/posts/' + user.id;
             return (
               <div key={index}>
-                <div className='row d-flex justify-content-xl-center justify-content-md-center justify-content-sm-center '>
-                  {user.id} . {user.title}
-                </div>
+                <Link className='row d-flex justify-content-xl-center justify-content-md-center justify-content-sm-center '
+                  to={PostDetails}>
+                  {user.title}
+                </Link>
               </div>
             );
-          })}
-        </div>
+          })
+          }
+        </div >
       );
-    } else return <div> no users</div>;
+    } else return <div> no posts</div>;
   };
 
   return (
@@ -57,10 +61,10 @@ const Users = () => {
         Next Page
       </button>
       <div>
-        <RenderUsers usersList={users} />
+        <RenderPosts postsList={posts} />
       </div>
     </div>
   );
 };
 
-export default Users;
+export default ShoppingPosts;

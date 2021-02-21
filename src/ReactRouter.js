@@ -1,22 +1,35 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import App from './App';
-import Posts from './components/Posts';
+
 import Header from "./components/Header";
-import ShoppingCards from './components/shoppingCards';
-import Users from "./components/users";
-import Estimations from "./components/Estimations";
 import Footer from './components/Footer';
+import routes from './routes';
+
+function RouteWithSubRoutes(route) {
+  return (
+    <Route
+      path={route.path}
+      exact={route.exact}
+      render={props => (
+        // pass the sub-routes down to keep nesting
+        <route.component {...props} routes={route.routes} />
+      )}
+    />
+  );
+}
+
 const ReactRouter = () => {
   return (
     <Router>
       <Header />
-      <Route exact path='/' component={App} />
-      <Route path='/posts' component={Posts} />
-      {/* <Route path="/cards" component={ShoppingCards} /> */}
-      <Route path="/cards" component={Users} />
-      <Route path="/estimations" component={Estimations} />
-      <Footer />
+      <Switch>
+        {routes.map((route, i) => (
+          <RouteWithSubRoutes key={i} {...route} />
+        ))}
+      </Switch>
+      {/* <Footer /> */}
+
     </Router>
   );
 };
