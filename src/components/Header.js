@@ -37,7 +37,7 @@ const Header = () => {
           <span className='navbar-toggler-icon'></span>
         </button>
 
-        <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+        <div className='collapse navbar-collapse pt-4' id='navbarSupportedContent'>
           <ul className='navbar-nav mr-auto'>
             <li className='nav-item active'>
               <Link className='nav-link text-white' id='bb-nav-title' to='/posts'>

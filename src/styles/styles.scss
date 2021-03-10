@@ -87,3 +87,54 @@ a {
   min-height: 6em;
   max-height: 2em;
 }
+
+.next-page {
+  right: 5px;
+  position: absolute;
+}
+
+.carousel-img {
+  height: 40vw;
+}
+
+#posts {
+  background-color: white;
+  .shopping-card-title {
+    margin: 10px;
+    height: 60px;
+    overflow: hidden;
+    a {
+      color: black;
+      font-size: large;
+      font-weight: bold;
+      height: 10px;
+    }
+  }
+  .card-block {
+    height: 190px;
+  }
+  .card-image {
+    height: 100px;
+    width: 100px;
+    background-color: green;
+  }
+}
+#contact-me-container {
+  background-color: white;
+
+  .contact-me {
+    background-image: url('../Assets/contactme.jpg');
+    height: fit-content;
+    left: 0;
+    right: 0;
+  }
+  .contact-me-title {
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+  }
+  .contact-me-container {
+    position: absolute;
+    top: 180px;
+  }
+}

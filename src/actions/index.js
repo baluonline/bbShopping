@@ -15,7 +15,7 @@ export const FETCH_USER_ALBUMS = "FETCH_USER_ALBUMS";
 
 const basePath = "https://randomuser.me/api";
 const jsonplaceholder = "https://jsonplaceholder.typicode.com/";
-
+const shoppingBasePath = "https://sheet.best/api/sheets/b0662ba6-dcf3-4df1-a11f-8d43de859606";
 
 export const fetchUserData = () => {
     return axios
@@ -61,4 +61,22 @@ export const fetchPosts = () => {
                 payload: error
             };
         });
+};
+
+export const fetchShoppingCards = () => {
+    return axios.post(shoppingBasePath, {
+        "Location collected from": "Des Moines, IA",
+        "Donor": "Test from UI",
+        "Email": "shalinisadhu@gmail.com",
+        "Amount Pledged": "$100",
+        "Paid To": "Chaitu",
+        "Final Received": "Ravimohan",
+        "Recieved Till Now": "100",
+        "Total": null,
+        "Recieved by Lenin": null
+    })
+        .then(({ data }) => {
+            console.log(data);
+        })
+        .catch(error => console.log(error));
 };

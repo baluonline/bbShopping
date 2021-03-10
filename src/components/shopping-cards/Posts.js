@@ -25,45 +25,40 @@ const ShoppingPosts = () => {
   }, []);
 
   const RenderPosts = ({ postsList }) => {
+    const cols = ['col - 4', 'col - 4', 'col - 4'];
     if (postsList) {
       return (
-        <div>
-          {postsList.map((user, index) => {
-            const PostDetails = '/posts/' + user.id;
-            return (
-              <div key={index}>
-                <Link className='row d-flex justify-content-xl-center justify-content-md-center justify-content-sm-center '
-                  to={PostDetails}>
-                  {user.title}
-                </Link>
-              </div>
-            );
-          })
-          }
-        </div >
+        <div className="container">
+          <div className="row">
+
+            {postsList.map((user, index) => {
+              const PostDetails = '/posts/' + user.id;
+              return (
+                <div key={index} className="col-4 card-block ">
+                  <div className="shopping-card-title ma-10">
+                    <Link className="justify-content-xl-center justify-content-md-center justify-content-sm-center"
+                      to={PostDetails}>
+                      {user.title}
+                    </Link>
+                  </div>
+                  <div className="card-image pa-10">
+                  </div>
+                </div>
+              );
+            })
+            }
+          </div>
+        </div>
       );
     } else return <div> no posts</div>;
   };
 
   return (
-    <div>
-      <button
-        className='btn-primary btn-lg float-left'
-        onClick={() => dispatch({ type: 'DECREMENT' })}
-      >
-        Previous
-      </button>
-      <span > pageNumber : {pageNumber} </span>
-      <button
-        className='btn-primary btn-lg float-right'
-        onClick={() => dispatch({ type: 'INCREMENT', data: 1 })}
-      >
-        Next Page
-      </button>
-      <div>
-        <RenderPosts postsList={posts} />
-      </div>
+
+    <div className="row" id="posts">
+      <RenderPosts postsList={posts} />
     </div>
+
   );
 };
 
