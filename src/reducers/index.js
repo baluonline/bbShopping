@@ -14,7 +14,8 @@ const initialState = {
   users: [],
   disabledLinks: false,
   disabledPrevious: false,
-  jsonUsers: []
+  jsonUsers: [],
+  contactName: ''
 };
 const counterReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -42,6 +43,7 @@ const counterReducer = (state = initialState, action) => {
         ...state,
         disabledLinks: state.pageNumber < 1
       };
+
     default:
       return state;
   }

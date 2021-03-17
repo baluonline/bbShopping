@@ -120,11 +120,12 @@ a {
   }
 }
 #contact-me-container {
-  background-color: white;
+  // background-color: white;
 
   .contact-me {
     background-image: url('../Assets/contactme.jpg');
     height: fit-content;
+    padding: 3.5em;
     left: 0;
     right: 0;
   }
@@ -134,7 +135,7 @@ a {
     position: absolute;
   }
   .contact-me-container {
-    position: absolute;
+    text-align: center;
     top: 180px;
   }
 }

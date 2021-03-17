@@ -11,6 +11,10 @@ export const FETCH_USERS_JSON = "FETCH_USERS_JSON";
 export const FETCH_POSTS = "FETCH_POSTS";
 export const FETCH_ALBUMS = "FETCH_ALBUMS";
 export const FETCH_USER_ALBUMS = "FETCH_USER_ALBUMS";
+export const CONTACT_DETAILS = "CONTACT_DETAILS";
+export const CONTACT_EMAIL = "CONTACT_EMAIL";
+export const CONTACT_MESSAGE = "CONTACT_MESSAGE";
+
 
 
 const basePath = "https://randomuser.me/api";
